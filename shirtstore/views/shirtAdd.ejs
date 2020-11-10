@@ -1,0 +1,45 @@
+	<%- include('refactor/header') %>
+		<h1 class="jumbotron text-center text-light p-5 custom-jumbotron">Add new shirt</h1>
+		<div class="form-container pb-5 mb-2">
+			<% if (error) { %>
+				<div class="alert alert-danger" role="alert">
+					<%= error %> 
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					  <span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+			<% } %>
+			<form action="/shirts/add" method="POST">
+				<div class="form-group">
+					<label for="">Name</label><br>
+					<input type="text" name="name" class="form-control" placeholder="e.g: Kaos Polo Garis">
+				</div>
+				<div class="form-group">
+					<label for="">Type</label><br>
+					<select name="type" class="form-control">
+						<option value="">-- Select Type --</option>
+						<option value="Casual">Casual</option>
+						<option value="Dress">Dress</option>
+						<option value="T-Shirt">T-Shirt</option>
+						<option value="Polo">Polo</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="">Size</label><br>
+					<select name="size" class="form-control">
+						<option value="">-- Select Size --</option>
+						<option value="S">S</option>
+						<option value="M">M</option>
+						<option value="L">L</option>
+						<option value="XL">XL</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="">Stock</label><br>
+					<input type="number" name="stock" class="form-control" placeholder="e.g: 12">
+					<small id="emailHelp" class="form-text text-muted">Fill stock amount from 0 to 100</small>
+				</div>
+				<button type="submit" class="btn btn-danger">Add Shirt</button>
+			</form>
+		</div>
+	<%- include('refactor/footer') %>

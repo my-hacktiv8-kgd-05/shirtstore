@@ -1,0 +1,45 @@
+	<%- include('refactor/header') %>
+		<h1 class="jumbotron text-center text-light p-5 custom-jumbotron">Edit shirt</h1>
+		<div class="form-container pb-5 mb-2">
+			<% if (error) { %>
+				<div class="alert alert-danger" role="alert">
+					<%= error %> 
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					  <span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+			<% } %>
+			<form action="/shirts/edit/<%= id %> " method="POST">
+				<div class="form-group">
+					<label for="">Name</label><br>
+					<input type="text" name="name" class="form-control" value="<%= data.name %>">
+				</div>
+				<div class="form-group">
+					<label for="">Type</label><br>
+					<select name="type" class="form-control">
+						<option value="">-- Select Type --</option>
+						<option value="Casual"<% if (data.type == 'Casual') { %> selected <% } %>>Casual</option>
+						<option value="Dress"<% if (data.type == 'Dress') { %> selected <% } %>>Dress</option>
+						<option value="T-Shirt"<% if (data.type == 'T-Shirt') { %> selected <% } %>>T-Shirt</option>
+						<option value="Polo"<% if (data.type == 'Polo') { %> selected <% } %>>Polo</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="">Size</label><br>
+					<select name="size" class="form-control">
+						<option value="">-- Select Size --</option>
+						<option value="S"<% if (data.size == 'S') { %> selected <% } %>>S</option>
+						<option value="M"<% if (data.size == 'M') { %> selected <% } %>>M</option>
+						<option value="L"<% if (data.size == 'L') { %> selected <% } %>>L</option>
+						<option value="XL"<% if (data.size == 'XL') { %> selected <% } %>>XL</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="">Stock</label><br>
+					<input type="number" name="stock" class="form-control" placeholder="e.g: 12" value="<%= data.stock %>">
+					<small id="emailHelp" class="form-text text-muted">Fill stock amount from 0 to 100</small>
+				</div>
+				<button type="submit" class="btn btn-danger">Update Shirt</button>
+			</form>
+		</div>
+	<%- include('refactor/footer') %>
